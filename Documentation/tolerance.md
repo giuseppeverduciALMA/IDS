@@ -1,15 +1,15 @@
-# Tolerance in IDS
+# Tolerance value in IDS
 
 This document summarizes what was commented on in issues [78](https://github.com/buildingSMART/IDS/issues/78) and [36](https://github.com/buildingSMART/IDS/issues/36) and the various calls.
 
 ## Numeric Data Type
 
-IDS supports only integers and doubles. Tolerance applies only to doubles for both ids:simpleValue and xs:resctriction.
+IDS supports only integers and doubles. The tolerance value applies only to doubles for both ids:simpleValue and xs:resctriction.
 
 ## Tolerance
 
 A tolerance value must always be considered for the equality of floating-point numbers, because of rounding errors.
-IDS uses a fixed tolerance value (**ϵ = 1.0e⁻⁶**). The tolerance covers rounding problems when using 32-bit floating point math. For this reason, it need not be configurable: it is specific only for rounding errors, not for construction-related tolerances, in which case users need to provide an explicit range. [@aothms [issue 36 comment](https://github.com/buildingSMART/IDS/issues/36#issuecomment-1014473533)]
+IDS uses a fixed tolerance value (**ϵ = 1.0e⁻⁶**). The tolerance covers rounding problems when using 32-bit floating point math. Therefore, it need not be configurable: it is specific only for rounding errors, not for construction-related tolerances, in which case users need to provide an explicit range. [@aothms [issue 36 comment](https://github.com/buildingSMART/IDS/issues/36#issuecomment-1014473533)]
 
 Six significant digits are rather pessimistic, based on the number of significant digits that can safely survive a roundtrip as 32-bit float. [@aothms [issue 78 comment](https://github.com/buildingSMART/IDS/issues/78#issuecomment-1245025134)]
 
