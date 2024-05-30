@@ -32,6 +32,7 @@ In addition, it is highly recommended to also provide the following features for
 - When a user is specifying a value with a unit, you should provide conversion tools so that the user can write the IDS in their preferred unit
 - You may also choose to preload standardised classification names for commonly known systems, as well as the classification references to prevent spelling errors. You may choose to use this [IFC directory for classification systems](https://github.com/Moult/ifcclassification).
 - When users are nominating a **Material Facet**, your interface should recommend the IFC recommended material categories (one of 'concrete', 'steel', 'aluminium', 'block', 'brick', 'stone', 'wood', 'glass', 'gypsum', 'plastic', or 'earth')
+- When specifying values, the XML strings (for simpleValue and restriction enumeration) should conform to the [regular expressions](DataTypes.md#xml-base-types) presented in the [DataType documentation](DataTypes.md).
 
 ## Checking IDS against IFC
 
@@ -72,7 +73,8 @@ To help you get started with development, here is a directory of IDS libraries t
 
 | Language | License           | Library                                      | Notes                                                               |
 | -------- | ----------------- | -------------------------------------------- | ------------------------------------------------------------------- |
-| C#       | CDDL              | [XBim](https://github.com/CBenghi/Xbim.Xids) | A verification library is also available, with a commercial license |
+| C#/.NET  | CDDL              | [xbim Xids](https://github.com/CBenghi/Xbim.Xids) | A library to read, write data in IDS files                     |
+| C#/.NET  | AGPL-3.0-only / commercial | [xbim Toolkit IDS Validator](https://github.com/xBimTeam/Xbim.IDS.Validator) | A complete IDS verification library for IFC models  |
 | Python   | LGPL-3.0-or-later | [IfcOpenShell](https://ifcopenshell.org/)    |                                                                     |
 | ?        | ?                 | ODA?                                         |                                                                     |
 

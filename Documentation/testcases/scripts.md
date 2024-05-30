@@ -214,31 +214,31 @@ Requirements:
 Attribute: ''Name''
 ```
 
-### Booleans must be specified as uppercase strings 1/3
+### Booleans must be specified as lowercase strings 1/3
 
-``` ids attribute/fail-booleans_must_be_specified_as_uppercase_strings_1_3.ids
-Booleans must be specified as uppercase strings 1/3
+``` ids attribute/fail-booleans_must_be_specified_as_lowercase_strings_1_3.ids
+Booleans must be specified as lowercase strings 1/3
 Entity: ''IFCTASK''
 Requirements:
-Attribute: ''IsMilestone'',''TRUE''
+Attribute: ''IsMilestone'',''true''
 ```
 
-### Booleans must be specified as uppercase strings 2/3
+### Booleans must be specified as lowercase strings 2/3
 
-``` ids attribute/fail-booleans_must_be_specified_as_uppercase_strings_2_3.ids
-Booleans must be specified as uppercase strings 2/3
-Entity: ''IFCTASK''
-Requirements:
-Attribute: ''IsMilestone'',''False''
-```
-
-### Booleans must be specified as uppercase strings 2/3
-
-``` ids attribute/pass-booleans_must_be_specified_as_uppercase_strings_2_3.ids
-Booleans must be specified as uppercase strings 2/3
+``` ids attribute/invalid-booleans_must_be_specified_as_lowercase_strings_2_3.ids
+Booleans must be specified as lowercase strings 2/3
 Entity: ''IFCTASK''
 Requirements:
 Attribute: ''IsMilestone'',''FALSE''
+```
+
+### Booleans must be specified as lowercase strings 2/3
+
+``` ids attribute/pass-booleans_must_be_specified_as_lowercase_strings_2_3.ids
+Booleans must be specified as lowercase strings 2/3
+Entity: ''IFCTASK''
+Requirements:
+Attribute: ''IsMilestone'',''false''
 ```
 
 ### Dates are treated as strings 1/2
@@ -355,10 +355,10 @@ Requirements:
 Attribute: ''NumberOfRisers'',''42''
 ```
 
-### Integers follow the same rules as numbers 2/2
+### Integers cannot be expressed as floating point numbers 2/2
 
-``` ids attribute/pass-integers_follow_the_same_rules_as_numbers_2_2.ids
-Integers follow the same rules as numbers 2/2
+``` ids attribute/invalid-integers_cannot_be_expressed_as_floating_point_numbers_2_2.ids
+Integers cannot be expressed as floating point numbers 2/2
 IFC4
 Entity: ''IFCSTAIRFLIGHT''
 Requirements:
@@ -459,7 +459,7 @@ Attribute: ''RefractionIndex'',''42''
 
 ### Only specifically formatted numbers are allowed 1/4
 
-``` ids attribute/fail-only_specifically_formatted_numbers_are_allowed_1_4.ids
+``` ids attribute/invalid-only_specifically_formatted_numbers_are_allowed_1_4.ids
 Only specifically formatted numbers are allowed 1/4
 Entity: ''IFCSURFACESTYLEREFRACTION''
 Requirements:
@@ -468,7 +468,7 @@ Attribute: ''RefractionIndex'',''42,3''
 
 ### Only specifically formatted numbers are allowed 2/4
 
-``` ids attribute/fail-only_specifically_formatted_numbers_are_allowed_2_4.ids
+``` ids attribute/invalid-only_specifically_formatted_numbers_are_allowed_2_4.ids
 Only specifically formatted numbers are allowed 2/4
 Entity: ''IFCSURFACESTYLEREFRACTION''
 Requirements:
@@ -493,12 +493,12 @@ Requirements:
 Attribute: ''RefractionIndex'',''1.2345E3''
 ```
 
-### Specifying a float when the value is an integer will fail
+### Specifying a float when the value is an integer is invalid
 
 Note that the attribute name `NumberOfRiser` has been renamed to `NumberOfRisers` in IFC4
 
-``` ids attribute/fail-specifying_a_float_when_the_value_is_an_integer_will_fail.ids
-Specifying a float when the value is an integer will fail
+``` ids attribute/invalid-specifying_a_float_when_the_value_is_an_integer_is_invalid.ids
+Specifying a float when the value is an integer is invalid
 IFC4
 Entity: ''IFCSTAIRFLIGHT''
 Requirements:
@@ -1681,13 +1681,40 @@ Requirements:
 PartOf: Pattern(''.*''),IFCRELCONTAINEDINSPATIALSTRUCTURE
 ```
 
-### The container may be indirect
+### The container must be related using specified relation 1/2
 
-``` ids partof/pass-the_container_may_be_indirect.ids
-The container may be indirect
+``` ids partof/pass-the_container_must_be_related_using_specified_relation_1_2.ids
+The container must be related using specified relation 1/2
 Entity: ''IFCBEAM''
 Requirements:
 PartOf: ''IFCSPACE'',IFCRELCONTAINEDINSPATIALSTRUCTURE
+```
+
+### The container must be related using specified relation 2/2
+
+``` ids partof/fail-the_container_must_be_related_using_specified_relation_2_2.ids
+The container must be related using specified relation 2/2
+Entity: ''IFCBEAM''
+Requirements:
+PartOf: ''IFCSPACE'',IFCRELCONTAINEDINSPATIALSTRUCTURE
+```
+
+### The containment can be indirect 1/2
+
+``` ids partof/pass-the_containment_can_be_indirect_1_2.ids
+The containment can be indirect 1/2
+Entity: ''IFCBEAM''
+Requirements:
+PartOf: ''IFCBUILDING'',IFCRELAGGREGATES
+```
+
+### The containment can be indirect 2/2
+
+``` ids partof/fail-the_containment_can_be_indirect_2_2.ids
+The containment can be indirect 2/2
+Entity: ''IFCBEAM''
+Requirements:
+PartOf: ''IFCBUILDING'',IFCRELAGGREGATES
 ```
 
 ### The container predefined type must match exactly 1/2
@@ -2029,41 +2056,41 @@ Requirements:
 Property: ''Pset_WallCommon'',''Status'',IFCLABEL,''DEMOLISH''
 ```
 
-### Any matching value in an enumerated property will pass 3/3
+### No matching value in an enumerated property will fail 3/3
 
-``` ids property/fail-any_matching_value_in_an_enumerated_property_will_pass_3_3.ids
-Any matching value in an enumerated property will pass 3/3
+``` ids property/fail-no_matching_value_in_an_enumerated_property_will_fail_3_3.ids
+No matching value in an enumerated property will fail 3/3
 IFC4
 Entity: ''IFCWALL''
 Requirements:
 Property: ''Pset_WallCommon'',''Status'',IFCLABEL,''NEW''
 ```
 
-### Booleans must be specified as uppercase strings 1/3
+### Booleans must be specified as lowercase strings 1/3
 
-``` ids property/fail-booleans_must_be_specified_as_uppercase_strings_1_3.ids
-Booleans must be specified as uppercase strings 1/3
+``` ids property/fail-booleans_must_be_specified_as_lowercase_strings_1_3.ids
+Booleans must be specified as lowercase strings 1/3
 Entity: ''IFCWALL''
 Requirements:
-Property: ''Foo_Bar'',''Foo'',IFCBOOLEAN,''TRUE''
+Property: ''Foo_Bar'',''Foo'',IFCBOOLEAN,''true''
 ```
 
-### Booleans must be specified as uppercase strings 2/3
+### Booleans must be specified as lowercase strings 2/3
 
-``` ids property/pass-booleans_must_be_specified_as_uppercase_strings_2_3.ids
-Booleans must be specified as uppercase strings 2/3
+``` ids property/pass-booleans_must_be_specified_as_lowercase_strings_2_3.ids
+Booleans must be specified as lowercase strings 2/3
+Entity: ''IFCWALL''
+Requirements:
+Property: ''Foo_Bar'',''Foo'',IFCBOOLEAN,''false''
+```
+
+### Booleans must be specified as lowercase strings 3/3
+
+``` ids property/invalid-booleans_must_be_specified_as_lowercase_strings_3_3.ids
+Booleans must be specified as lowercase strings 3/3
 Entity: ''IFCWALL''
 Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCBOOLEAN,''FALSE''
-```
-
-### Booleans must be specified as uppercase strings 3/3
-
-``` ids property/fail-booleans_must_be_specified_as_uppercase_strings_3_3.ids
-Booleans must be specified as uppercase strings 3/3
-Entity: ''IFCWALL''
-Requirements:
-Property: ''Foo_Bar'',''Foo'',IFCBOOLEAN,''False''
 ```
 
 ### Complex properties are not supported 1/2
@@ -2219,19 +2246,19 @@ Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCINTEGER,''42''
 ```
 
-### Integer values are checked using type casting 2/4
+### Integer values cannot be stored with decimal 2/4
 
-``` ids property/pass-integer_values_are_checked_using_type_casting_2_4.ids
-Integer values are checked using type casting 2/4
+``` ids property/invalid-integer_values_cannot_be_stored_with_decimal_2_4.ids
+Integer values cannot be stored with decimal 2/4
 Entity: ''IFCWALL''
 Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCINTEGER,''42.''
 ```
 
-### Integer values are checked using type casting 3/4
+### Integer values cannot be stored with decimal 3/4
 
-``` ids property/pass-integer_values_are_checked_using_type_casting_3_4.ids
-Integer values are checked using type casting 3/4
+``` ids property/invalid-integer_values_cannot_be_stored_with_decimal_3_4.ids
+Integer values cannot be stored with decimal 3/4
 Entity: ''IFCWALL''
 Requirements:
 Property: ''Foo_Bar'',''Foo'',IFCINTEGER,''42.0''
@@ -2239,7 +2266,7 @@ Property: ''Foo_Bar'',''Foo'',IFCINTEGER,''42.0''
 
 ### Integer values are checked using type casting 4/4
 
-``` ids property/fail-integer_values_are_checked_using_type_casting_4_4.ids
+``` ids property/invalid-integer_values_are_checked_using_type_casting_4_4.ids
 Integer values are checked using type casting 4/4
 Entity: ''IFCWALL''
 Requirements:
@@ -2275,7 +2302,7 @@ Property: ''Foo_Bar'',''Foo'',IFCLABEL,''♫Don'tÄrgerhôtelЊет''
 
 ### Only specifically formatted numbers are allowed 1/4
 
-``` ids property/fail-only_specifically_formatted_numbers_are_allowed_1_4.ids
+``` ids property/invalid-only_specifically_formatted_numbers_are_allowed_1_4.ids
 Only specifically formatted numbers are allowed 1/4
 Entity: ''IFCWALL''
 Requirements:
@@ -2284,7 +2311,7 @@ Property: ''Foo_Bar'',''Foo'',IFCREAL,''42,3''
 
 ### Only specifically formatted numbers are allowed 2/4
 
-``` ids property/fail-only_specifically_formatted_numbers_are_allowed_2_4.ids
+``` ids property/invalid-only_specifically_formatted_numbers_are_allowed_2_4.ids
 Only specifically formatted numbers are allowed 2/4
 Entity: ''IFCWALL''
 Requirements:
@@ -2480,10 +2507,10 @@ Property: ''Pset_WallCommon'',''FireRating'',IFCLABEL,Pattern(''(-|[0-9]{2,3})\/
 
 ## restriction
 
-### A bound can be inclusive 1/3
+### A bound can be exclusive 1/3
 
-``` ids restriction/fail-a_bound_can_be_inclusive_1_3.ids
-A bound can be inclusive 1/3
+``` ids restriction/fail-a_bound_can_be_exclusive_1_3.ids
+A bound can be exclusive 1/3
 Entity: ''IFCSURFACESTYLEREFRACTION''
 Requirements:
 Attribute: ''RefractionIndex'',xs:double MinExclusive(''0'') MaxExclusive(''10'')
@@ -2498,10 +2525,10 @@ Requirements:
 Attribute: ''RefractionIndex'',xs:double MinInclusive(''0'') MaxInclusive(''10'')
 ```
 
-### A bound can be inclusive 2/3
+### A bound can be exclusive 2/3
 
-``` ids restriction/pass-a_bound_can_be_inclusive_2_3.ids
-A bound can be inclusive 2/3
+``` ids restriction/pass-a_bound_can_be_exclusive_2_3.ids
+A bound can be exclusive 2/3
 Entity: ''IFCSURFACESTYLEREFRACTION''
 Requirements:
 Attribute: ''RefractionIndex'',xs:double MinExclusive(''0'') MaxExclusive(''10'')
@@ -2516,10 +2543,10 @@ Requirements:
 Attribute: ''RefractionIndex'',xs:double MinInclusive(''0'') MaxInclusive(''10'')
 ```
 
-### A bound can be inclusive 3/3
+### A bound can be exclusive 3/3
 
-``` ids restriction/fail-a_bound_can_be_inclusive_3_3.ids
-A bound can be inclusive 3/3
+``` ids restriction/fail-a_bound_can_be_exclusive_3_3.ids
+A bound can be exclusive 3/3
 Entity: ''IFCSURFACESTYLEREFRACTION''
 Requirements:
 Attribute: ''RefractionIndex'',xs:double MinExclusive(''0'') MaxExclusive(''10'')
